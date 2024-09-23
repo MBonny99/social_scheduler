@@ -1,4 +1,5 @@
-from flask import Flask, redirect, request, session, url_for, render_template
+from flask import Flask, redirect, request, session, url_for, render_template, send_from_directory
+import os
 import requests
 
 app = Flask(__name__)
@@ -13,7 +14,8 @@ GRAPH_API_URL = 'https://graph.facebook.com/v17.0'
 # Step 1: Homepage per l'autenticazione
 @app.route('/')
 def home():
-    return render_template('index.html')
+    # Serve il file index.html dalla root del progetto
+    return send_from_directory(os.getcwd(), 'index.html')
 
 # Step 2: Avvia l'autenticazione con Instagram OAuth
 @app.route('/login')
