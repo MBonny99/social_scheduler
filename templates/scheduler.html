@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Scheduler</h1>
+    <div style="display: flex; justify-content: space-between;">
+        <!-- Prima colonna -->
+        <div style="width: 30%;">
+            <h3>Elementi Selezionabili</h3>
+            <ul id="social-list">
+                <li id="instagram_tile">
+                    Instagram
+                    <input id="input_username_instagram_1" type="text" placeholder="Username" style="display: block; margin-top: 5px;">
+                    <input id="input_password_instagram_1" type="password" placeholder="Password" style="display: block; margin-top: 5px;">
+                </li>
+                <li id="facebook_tile">
+                    Facebook
+                    <input id="input_username_facebook" type="text" placeholder="Username" style="display: block; margin-top: 5px;">
+                    <input id="input_password_facebook" type="password" placeholder="Password" style="display: block; margin-top: 5px;">
+                </li>
+                <li id="tiktok_tile">
+                    TikTok
+                    <input id="input_username_tiktok" type="text" placeholder="Username" style="display: block; margin-top: 5px;">
+                    <input id="input_password_tiktok" type="password" placeholder="Password" style="display: block; margin-top: 5px;">
+                </li>
+                <li id="linkedin_tile">
+                    LinkedIn
+                    <input id="input_username_linkedin" type="text" placeholder="Username" style="display: block; margin-top: 5px;">
+                    <input id="input_password_linkedin" type="password" placeholder="Password" style="display: block; margin-top: 5px;">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Seconda colonna -->
+        <div id="details-column" style="width: 30%; display: flex; flex-direction: column;">
+            <h3>Dettagli Post</h3>
+            <form id="post-form" action="/post_to_instagram" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="input_username_instagram" name="username_instagram">
+                <input type="hidden" id="input_password_instagram" name="password_instagram">
+                <label for="title">Titolo:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="media">Immagine/Video:</label>
+                <input type="file" id="media" name="media" accept="image/*,video/*" multiple required>
+
+                <label for="description">Descrizione:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="publication_date">Data di Pubblicazione:</label>
+                <input type="datetime-local" id="publication_date" name="publication_date" required>
+
+                <button type="submit">Pubblica</button>
+            </form>
+        </div>
+
+        <!-- Terza colonna -->
+        <div id="terza_colonna" style="width: 30%; display: flex; align-items: center; justify-content: center;">
+            <h3>Preview</h3>
+            <div id="div_telefono">
+                <div id="top_separator_telefono"></div>
+                <div id="user_telefono"></div>
+                <div id="titolo_telefono"></div>
+                <div id="location_telefono"></div>
+                <div id="mediaPreview"></div>
+                <div id="descrizione_telefono"></div>
+                <div id="bottom_separator_telefono"></div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

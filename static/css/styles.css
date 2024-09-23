@@ -1,0 +1,50 @@
+.locked {
+    opacity: 0.5;
+}
+.selected {
+    background-color: #d3e6ff; /* Colore di sfondo per gli elementi selezionati */
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    padding: 5px;
+    cursor: pointer;
+}
+#div_telefono {
+    height: 70vh;
+    border-radius: 10px;
+    width: 65%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+#top_separator_telefono,
+#bottom_separator_telefono {
+    height: 12vh;
+}
+#user_telefono,
+#titolo_telefono,
+#location_telefono,
+#descrizione_telefono {
+    border: 1px solid black;
+}
+#mediaPreview {
+    display: flex;
+    overflow-x: hidden; /* Nasconde la barra di scorrimento */
+    scroll-snap-type: x mandatory; /* Attiva lo snap orizzontale */
+    height: 20vh; /* Altezza per l'anteprima */
+}
+.mediaItem {
+    flex: none; /* Impedisce la crescita */
+    width: 100%; /* Ogni elemento occupa l'intera larghezza del contenitore */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center; /* Allinea al centro */
+}
+.mediaItem img, .mediaItem video {
+    max-height: 100%;
+    max-width: 100%;
+}

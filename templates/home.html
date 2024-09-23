@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Gestione Social</h1>
+
+    <form id="social-form">
+        <h2>Social Network</h2>
+        <div>
+            <label for="instagram-username">Instagram Username:</label>
+            <input type="text" id="instagram-username" name="instagram-username">
+            <label for="instagram-phone">Telefono:</label>
+            <input type="text" id="instagram-phone" name="instagram-phone">
+            <label for="instagram-password">Password:</label>
+            <input type="password" id="instagram-password" name="instagram-password">
+        </div>
+        <div>
+            <label for="facebook-username">Facebook Username:</label>
+            <input type="text" id="facebook-username" name="facebook-username">
+            <label for="facebook-phone">Telefono:</label>
+            <input type="text" id="facebook-phone" name="facebook-phone">
+            <label for="facebook-password">Password:</label>
+            <input type="password" id="facebook-password" name="facebook-password">
+        </div>
+        <div>
+            <label for="linkedin-username">LinkedIn Username:</label>
+            <input type="text" id="linkedin-username" name="linkedin-username">
+            <label for="linkedin-phone">Telefono:</label>
+            <input type="text" id="linkedin-phone" name="linkedin-phone">
+            <label for="linkedin-password">Password:</label>
+            <input type="password" id="linkedin-password" name="linkedin-password">
+        </div>
+        <div>
+            <label for="tiktok-username">TikTok Username:</label>
+            <input type="text" id="tiktok-username" name="tiktok-username">
+            <label for="tiktok-phone">Telefono:</label>
+            <input type="text" id="tiktok-phone" name="tiktok-phone">
+            <label for="tiktok-password">Password:</label>
+            <input type="password" id="tiktok-password" name="tiktok-password">
+        </div>
+
+        <button type="button" id="schedule-btn">Schedule</button>
+    </form>
+
+    <script>
+        document.getElementById('schedule-btn').addEventListener('click', function () {
+            // Raccogliamo i dati dal form
+            const socialData = [
+                {
+                    social: 'instagram',
+                    username: document.getElementById('instagram-username').value,
+                    phone: document.getElementById('instagram-phone').value,
+                    password: document.getElementById('instagram-password').value
+                },
+                {
+                    social: 'facebook',
+                    username: document.getElementById('facebook-username').value,
+                    phone: document.getElementById('facebook-phone').value,
+                    password: document.getElementById('facebook-password').value
+                },
+                {
+                    social: 'linkedin',
+                    username: document.getElementById('linkedin-username').value,
+                    phone: document.getElementById('linkedin-phone').value,
+                    password: document.getElementById('linkedin-password').value
+                },
+                {
+                    social: 'tiktok',
+                    username: document.getElementById('tiktok-username').value,
+                    phone: document.getElementById('tiktok-phone').value,
+                    password: document.getElementById('tiktok-password').value
+                }
+            ];
+
+            // Inviamo i dati al server tramite una richiesta POST
+            fetch('/scheduler', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(socialData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Reindirizza l'utente alla pagina scheduler.html dopo il successo della richiesta
+                    window.location.href = '/scheduler';
+                } else {
+                    console.error('Errore durante l\'invio dei dati');
+                }
+            })
+            .catch(error => {
+                console.error('Errore di rete:', error);
+            });
+        });
+    </script>
+</body>
+</html>
